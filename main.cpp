@@ -52,6 +52,10 @@ int main() {
     BS::CalculateAndDisplayValues(in_str);
     in_str.close();
 
+    // Exercise 4
+    const std::string input_string {"this string 45 90 5f another true"};
+    // TODO do exercise 4 here
+
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }
