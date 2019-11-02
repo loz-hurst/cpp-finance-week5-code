@@ -22,6 +22,7 @@
  * full licence.
  */
 
+#include "BsFile.hpp"
 #include "File2Vector.hpp"
 #include <algorithm>
 #include <fstream>
@@ -44,6 +45,12 @@ int main() {
     std::ostream_iterator<double> out_itr {std::cout, " "};
     std::copy(std::begin(numbers), std::end(numbers), out_itr);
     std::cout << std::endl;
+
+    // Exercise 3
+    const std::string bs_datafile {"../bs.dat"};
+    in_str.open(bs_datafile); // Re-use the existing ifstream object
+    BS::CalculateAndDisplayValues(in_str);
+    in_str.close();
 
     std::cout << "Hello, World!" << std::endl;
     return 0;

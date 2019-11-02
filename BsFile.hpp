@@ -22,18 +22,33 @@
  * full licence.
  */
 
-#include "File2Vector.hpp"
+#ifndef CPP_FINANCE_WEEK5_CODE_BSFILE_HPP
+#define CPP_FINANCE_WEEK5_CODE_BSFILE_HPP
+
 #include <istream>
-#include <iostream>
-#include <vector>
 
-void ReadStream2DoubleVector(std::istream & in_str, std::vector<double> &vec) {
-    if (!in_str.good()){
-        std::cerr << "Stream is not good, unable to read!" << std::endl;
-        return;
-    }
+namespace BS {
+    struct bs_data {
+        double value;
+        double strike;
+        double maturity;
+        double rate;
+        double sigma;
+    };
 
-    // TODO read the file in and store each number in vec.
-    // Don't forget to check that the numbers read correctly (i.e. were doubles)
+    // Old, monolithic method - to be replaced
+    void CalculateAndDisplayValues(std::istream &);
 
+    // New methods:
+
+    // Reads in BS values from input stream to struct, provided
+    void ReadData(std::istream &, bs_data &);
+
+    // Calculate and return the option value from the data provided
+    double OptionValue(const bs_data &);
+
+    // Print out the data about and value of the option
+    void PrintOption(const bs_data &);
 }
+
+#endif //CPP_FINANCE_WEEK5_CODE_BSFILE_HPP
