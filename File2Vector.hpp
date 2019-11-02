@@ -22,29 +22,17 @@
  * full licence.
  */
 
-#include "File2Vector.hpp"
-#include <algorithm>
-#include <fstream>
-#include <iterator>
-#include <iostream>
-#include <string>
+#ifndef CPP_FINANCE_WEEK5_CODE_FILE2VECTOR_HPP
+#define CPP_FINANCE_WEEK5_CODE_FILE2VECTOR_HPP
+
+#include <istream>
 #include <vector>
 
-int main() {
+/* Reads doubles from the open input stream to the vector, provided.
+ * Uses emplace_back internally to add doubles to the vector.
+ * Will print an error and return is input stream is not good or
+ * anything that cannot be converted to a double is encountered.
+ */
+void ReadStream2DoubleVector(std::istream &, std::vector<double> &);
 
-    // Exercise 2
-    // CLion will run program in cmake-build-debug directory, so .. will refer to the project's root
-    const std::string numbers_filename {"../numbers.dat"};
-
-    std::ifstream in_str {numbers_filename};
-    std::vector<double> numbers;
-    ReadStream2DoubleVector(in_str, numbers);
-    in_str.close();
-    // Print what the method put into the vector
-    std::ostream_iterator<double> out_itr {std::cout, " "};
-    std::copy(std::begin(numbers), std::end(numbers), out_itr);
-    std::cout << std::endl;
-
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
-}
+#endif //CPP_FINANCE_WEEK5_CODE_FILE2VECTOR_HPP

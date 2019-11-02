@@ -23,28 +23,18 @@
  */
 
 #include "File2Vector.hpp"
-#include <algorithm>
-#include <fstream>
-#include <iterator>
+#include <istream>
 #include <iostream>
 #include <string>
 #include <vector>
 
-int main() {
+void ReadStream2DoubleVector(std::istream & in_str, std::vector<double> &vec) {
+    if (!in_str.good()){
+        std::cerr << "Stream is not good, unable to read!" << std::endl;
+        return;
+    }
 
-    // Exercise 2
-    // CLion will run program in cmake-build-debug directory, so .. will refer to the project's root
-    const std::string numbers_filename {"../numbers.dat"};
+    // TODO read the file in and store each number in vec.
+    // Don't forget to check that the numbers read correctly (i.e. were doubles)
 
-    std::ifstream in_str {numbers_filename};
-    std::vector<double> numbers;
-    ReadStream2DoubleVector(in_str, numbers);
-    in_str.close();
-    // Print what the method put into the vector
-    std::ostream_iterator<double> out_itr {std::cout, " "};
-    std::copy(std::begin(numbers), std::end(numbers), out_itr);
-    std::cout << std::endl;
-
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
 }
